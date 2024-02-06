@@ -9,6 +9,15 @@ public class Solution {
 
     public int[] TwoSum(int[] nums, int target) {
         Dictionary<int, int> nums_map = new Dictionary<int, int>();
+        for (int i = 0; i < nums.Length; i++) {
+            int complement = target - nums[i];
+            if (nums_map.ContainsKey(complement) && (nums_map[complement] != i)) {
+                int[] output = {nums_map[complement], i};
+                return output;
+            } else {
+                nums_map.Add(nums[i], i);
+            }
+        }
         return null;
     }
 }
